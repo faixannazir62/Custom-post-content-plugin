@@ -16,5 +16,7 @@
           exit;
  }
 
- 
+// including other php files
+include_once(plugin_dir_path( __FILE__ ) . 'includes/text-domain.php');
+include_once(plugin_dir_path( __FILE__ ) . 'includes/register-custom-post.php');
 
