@@ -11,4 +11,10 @@
  * Domain Path:     /languages
  */
 
+ // No directly access
+ if ( ! defined ( 'ABSPATH' )) {
+          exit;
+ }
+
+ 
 
