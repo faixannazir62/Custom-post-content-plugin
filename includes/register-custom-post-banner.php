@@ -22,11 +22,11 @@ function cpbfn_register_custom_post_banner(){
 
           );
           $args = array(
-                    
+
                     'labels'                => $labels,
                     'public'                => true,
                     'show_ui'               => true,
-                    'supports'              => array( 'title', 'editor', 'custom-fields', 'author', 'revisions' ),
+                    'supports'              => array( 'title', 'editor', 'author', 'revisions' ),
                     'has_archive'           => true,
                     'rewrite'               => true,
                     'query_var'             => true,
@@ -37,6 +37,9 @@ function cpbfn_register_custom_post_banner(){
 
           // Register post function
           register_post_type( 'cpbfn_banner', $args);
+          
+          // Remove custom fields
+          remove_post_type_support( 'cpbfn_banner', 'custom-fields' );
 
 }
 add_action( 'init', 'cpbfn_register_custom_post_banner');
