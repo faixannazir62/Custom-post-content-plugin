@@ -26,7 +26,9 @@ add_action( 'add_meta_boxes', 'cpfn_custom_post_list_meta_box' );
 // Add meta box content  callback function
 function cpfn_custom_post_list_meta_box_content( $post ) {
 
-     $posts = get_posts(array(
+    $cpfn_selected_post_id = get_post_meta( $post->ID, 'cpfn_selected_post_id', true);
+
+    $posts = get_posts( array(
         'post_type'      => 'post', 
         'posts_per_page' => -1,
     ));
