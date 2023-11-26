@@ -12,7 +12,7 @@ function cpbfn_custom_post_list_meta_box() {
     // The `add_meta_box` function is used to add a meta box to a custom post type
     add_meta_box(
         'custom-post-list-meta-box',
-        __('Set Banner', 'cp-banner-fn'),
+        __('Set Banner on Post', 'cp-banner-fn'),
         'cpbfn_custom_post_list_meta_box_content',
         'cpbfn_banner', 
         'normal',
