@@ -70,6 +70,9 @@ function cpfn_save_selected_post( $post_id ){
         // Update selected post id
         update_post_meta( $post_id, 'cpfn_selected_post_id', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
         
+        // Set custom post content to selected post
+        cpfn_set_custom_post_content();
+
     }
 }
 
