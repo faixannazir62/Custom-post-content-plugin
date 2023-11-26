@@ -1,4 +1,13 @@
 <?php 
+/**
+ * 
+ * The function `cpbfn_register_custom_post_banner` 
+ * registers a custom post type called "Banners" with
+ * various labels and settings.
+ * 
+ * 
+ */
+
 // Resgister Custom post function
 function cpbfn_register_custom_post_banner(){
           $labels = array(
