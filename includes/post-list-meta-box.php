@@ -12,7 +12,7 @@ function cpfn_custom_post_list_meta_box() {
     // The `add_meta_box` function is used to add a meta box to a custom post type
     add_meta_box(
         'custom-post-list-meta-box',
-        __('Set Content', 'cp-content-fn'),
+        __('Set Post', 'cp-content-fn'),
         'cpfn_custom_post_list_meta_box_content',
         'cpfn_content', 
         'normal',
@@ -33,8 +33,8 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
 
     if ( $posts ) {
         
-        echo '<label for="cpfn_select_post_id">' . esc_html__( 'Select a post: ', 'cp-content-fn' ) . '</label>';
-        echo '<select name="cpfn_select_post_id" id="cpfn_select_post_id">';
+        echo '<label for="cpfn_select_label">' . esc_html__( 'Select a post: ', 'cp-content-fn' ) . '</label>';
+        echo '<select name="cpfn_selected_post_id" id="cpfn_select_post_id">';
         echo '<option value="">' . esc_html__('Select a post', 'cp-content-fn') . '</option>';
 
         foreach ($posts as $post) {
@@ -48,4 +48,5 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
         // Reset global post data
         wp_reset_postdata(); 
     } 
+
 }
