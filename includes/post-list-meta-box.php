@@ -1,7 +1,7 @@
 <?php
 /**
  * 
- * This PHP function adds a meta box to a custom post type called "cpfn_banner" and displays a
+ * This PHP function adds a meta box to a custom post type called "cpfn_content" and displays a
  * dropdown list of posts to select from.
  * 
  */
@@ -43,7 +43,10 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
 
             setup_postdata($post);
 
-            echo '<option value="' . esc_attr($post->ID) . '">' . esc_html( $post->post_title, 'cp-content-fn' ) . '</option>';
+            echo '<option value="' . esc_attr($post->ID) . '" 
+            ' . selected( $post->ID, $cpfn_selected_post_id, false ) . '>
+            ' . esc_html( $post->post_title, 'cp-content-fn' ) . 
+            '</option>';
         }
 
         echo '</select>';
@@ -52,3 +55,22 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
     } 
 
 }
+
+/**
+ * 
+ * The function `cpfn_save_selected_post` saves the selected post ID as post meta when a post is saved.
+ * 
+ */
+
+function cpfn_save_selected_post( $post_id ){
+
+    // Check 'cpfn_selected_post_id' isset
+    if ( isset( $_POST['cpfn_selected_post_id'] ) ){
+
+        // Update selected post id
+        update_post_meta( $post_id, 'cpfn_selected_post_id', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
+        
+    }
+}
+
+add_action( 'save_post', 'cpfn_save_selected_post' );
