@@ -1,6 +1,12 @@
 <?php
+/**
+ * 
+ * The function `pcbfn_load_text_domain()` 
+ * is used to load the text domain for a plugin in PHP.
+ * 
+ */
 
-// Load text domain
+// Load domain function
 function pcbfn_load_text_domain(){
           load_plugin_textdomain( 
                     'cp-banner-fn', 
