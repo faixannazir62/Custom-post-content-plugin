@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name:     Custom post banner
  * Plugin URI:      https://www.postcustombanner.com
@@ -9,15 +8,16 @@
  * Author URI:      https://www.faizannazir.com
  * Text Domain:     cp-banner-fn
  * Domain Path:     /languages
- */
+*/
 
- // No directly access
- if ( ! defined ( 'ABSPATH' )) {
+// No directly access
+if ( ! defined ( 'ABSPATH' )) {
           exit;
- }
+}
 
 // including other php files
-include_once(plugin_dir_path( __FILE__ ) . 'includes/text-domain.php');
-include_once(plugin_dir_path( __FILE__ ) . 'includes/register-custom-post-banner.php');
-include_once(plugin_dir_path( __FILE__ ) . 'includes/post-list-meta-box.php');
+include_once( plugin_dir_path( __FILE__ ) . 'includes/text-domain.php');
+include_once( plugin_dir_path( __FILE__ ) . 'includes/register-custom-post-banner.php');
+include_once( plugin_dir_path( __FILE__ ) . 'includes/post-list-meta-box.php');
+include_once( plugin_dir_path( __FILE__ ) . 'includes/set-custom-post.php' );
 
