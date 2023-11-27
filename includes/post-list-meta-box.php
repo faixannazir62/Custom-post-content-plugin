@@ -34,8 +34,10 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
     ));
 
     if ( $posts ) {
-        
-        echo '<label for="cpfn_select_label">' . esc_html__( 'Select a post: ', 'cp-content-fn' ) . '</label>';
+
+        echo '<div class="cpfn_select_field_box">';
+        echo '<label for="cpfn_select_label" class="cpfn_sf_label">' 
+        . esc_html__( 'Select a post: ', 'cp-content-fn' ) . '</label>';
         echo '<select name="cpfn_selected_post_id" id="cpfn_select_post_id">';
         echo '<option value="">' . esc_html__('Select a post', 'cp-content-fn') . '</option>';
 
@@ -50,10 +52,17 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
         }
 
         echo '</select>';
+        echo '</div>';
+
         // Reset global post data
         wp_reset_postdata(); 
-    } 
-
+    }
+    
+    // Add custom post css 
+    echo '<div class="cpfn_css_field_box">';
+    echo '<label for="cpfn_textarea_post_label" class="cpfn_cp_css_label">Add Contetn CSS: </label>';
+    echo '<textarea name="cpfn_textarea_post_css" class="cpfn_textarea_cp_css" placeholder="Add Css here..."></textarea>';
+    echo '</div>';
 }
 
 /**
