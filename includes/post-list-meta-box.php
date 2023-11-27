@@ -36,10 +36,13 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
     if ( $posts ) {
 
         echo '<div class="cpfn_select_field_box">';
+        
         echo '<label for="cpfn_select_label" class="cpfn_sf_label">' 
         . esc_html__( 'Select a post: ', 'cp-content-fn' ) . '</label>';
+
         echo '<select name="cpfn_selected_post_id" id="cpfn_select_post_id">';
-        echo '<option value="">' . esc_html__('Select a post', 'cp-content-fn') . '</option>';
+
+        echo '<option value="">' . esc_html__( 'Select a post', 'cp-content-fn' ) . '</option>';
 
         foreach ($posts as $post) {
 
@@ -47,7 +50,7 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
 
             echo '<option value="' . esc_attr($post->ID) . '" 
             ' . selected( $post->ID, $cpfn_selected_post_id, false ) . '>
-            ' . esc_html( $post->post_title, 'cp-content-fn' ) . 
+            ' . esc_html__( $post->post_title, 'cp-content-fn' ) . 
             '</option>';
         }
 
@@ -60,8 +63,13 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
     
     // Add custom post css 
     echo '<div class="cpfn_css_field_box">';
-    echo '<label for="cpfn_textarea_post_label" class="cpfn_cp_css_label">Add Contetn CSS: </label>';
-    echo '<textarea name="cpfn_textarea_post_css" class="cpfn_textarea_cp_css" placeholder="Add Css here..."></textarea>';
+
+    echo '<label for="cpfn_textarea_post_label" class="cpfn_cp_css_label">' 
+    .  esc_html__( 'Add Content CSS:', 'cp-content-fn' ) . '</label>';
+
+    echo '<textarea name="cpfn_textarea_post_css" class="cpfn_textarea_cp_css" placeholder="' 
+    .  esc_attr( __('Add CSS here...', 'cp-content-fn') ) . '"></textarea>';
+
     echo '</div>';
 }
 
