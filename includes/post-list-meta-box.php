@@ -58,8 +58,12 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
 
 /**
  * 
- * The function `cpfn_save_selected_post` saves the selected post ID as post meta when a post is saved.
+ * This PHP function saves the selected post ID and updates the custom post content based on the
+ * selected post.
  * 
+ * @param post_id The post ID of the post being saved.
+ * 
+ * @return nothing.
  */
 
 function cpfn_save_selected_post( $post_id ){
@@ -67,11 +71,21 @@ function cpfn_save_selected_post( $post_id ){
     // Check 'cpfn_selected_post_id' isset
     if ( isset( $_POST['cpfn_selected_post_id'] ) ){
 
+        // Check if it's a revision
+        if ( wp_is_post_revision( $post_id ) ) {
+             return;
+        }     
         // Update selected post id
         update_post_meta( $post_id, 'cpfn_selected_post_id', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
+
+        // unhook this function so it doesn't loop infinitely
+        remove_action( 'save_post', 'cpfn_save_selected_post' );
         
         // Set custom post content to selected post
-        cpfn_set_custom_post_content();
+        cpfn_set_custom_post_content( $post_id, $_POST['cpfn_selected_post_id'] );
+
+        // re-hook this function
+		add_action('save_post', 'cpfn_save_selected_post');
 
     }
 }
