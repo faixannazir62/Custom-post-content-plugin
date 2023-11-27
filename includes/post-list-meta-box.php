@@ -11,8 +11,8 @@ function cpfn_custom_post_list_meta_box() {
     
     // The `add_meta_box` function is used to add a meta box to a custom post type
     add_meta_box(
-        'custom-post-list-meta-box',
-        __('Set Post', 'cp-content-fn'),
+        'cpfn_custom-post-list-meta-box',
+        __('Custom Post Content Settings', 'cp-content-fn'),
         'cpfn_custom_post_list_meta_box_content',
         'cpfn_content', 
         'normal',
@@ -35,7 +35,7 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
 
     if ( $posts ) {
 
-        echo '<div class="cpfn_select_field_box">';
+        echo '<div class="cpfn_select_field_box cpfn_padding cpfn_margin cpfn_flex">';
         
         echo '<label for="cpfn_select_label" class="cpfn_sf_label">' 
         . esc_html__( 'Select a post: ', 'cp-content-fn' ) . '</label>';
@@ -55,6 +55,7 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
         }
 
         echo '</select>';
+
         echo '</div>';
 
         // Reset global post data
@@ -62,7 +63,7 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
     }
     
     // Add custom post css 
-    echo '<div class="cpfn_css_field_box">';
+    echo '<div class="cpfn_css_field_box cpfn_padding cpfn_margin cpfn_flex">';
 
     echo '<label for="cpfn_textarea_post_label" class="cpfn_cp_css_label">' 
     .  esc_html__( 'Add Content CSS:', 'cp-content-fn' ) . '</label>';
