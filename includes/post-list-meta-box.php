@@ -24,16 +24,23 @@ function cpfn_custom_post_list_meta_box() {
 add_action( 'add_meta_boxes', 'cpfn_custom_post_list_meta_box' );
 
 // Add meta box content  callback function
-function cpfn_custom_post_list_meta_box_content( $post ) {
+function cpfn_custom_post_list_meta_box_content() {
 
+    // Global post variable
+    global $post;
+    
+    // Fetch the saved selected post id 
     $cpfn_selected_post_id = get_post_meta( $post->ID, 'cpfn_selected_post_id', true);
 
-    $posts = get_posts( array(
+    // Fetch the textarea saved post css
+    $cpfn_textarea_saved_css = get_post_meta( $post->ID, 'cpfn_textarea_saved_css', true);
+
+    $cpfn_already_posted_posts = get_posts( array(
         'post_type'      => 'post', 
         'posts_per_page' => -1,
     ));
 
-    if ( $posts ) {
+    if ( $cpfn_already_posted_posts ) {
 
         echo '<div class="cpfn_select_field_box cpfn_padding cpfn_margin cpfn_flex">';
         
@@ -44,13 +51,13 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
 
         echo '<option value="">' . esc_html__( 'Select a post', 'cp-content-fn' ) . '</option>';
 
-        foreach ($posts as $post) {
+        foreach ( $cpfn_already_posted_posts as $cpfn_already_posted_post) {
 
-            setup_postdata($post);
+            setup_postdata($cpfn_already_posted_post);
 
-            echo '<option value="' . esc_attr($post->ID) . '" 
-            ' . selected( $post->ID, $cpfn_selected_post_id, false ) . '>
-            ' . esc_html__( $post->post_title, 'cp-content-fn' ) . 
+            echo '<option value="' . esc_attr($cpfn_already_posted_post->ID) . '" 
+            ' . selected( $cpfn_already_posted_post->ID, $cpfn_selected_post_id, false ) . '>
+            ' . esc_html__( $cpfn_already_posted_post->post_title, 'cp-content-fn' ) . 
             '</option>';
         }
 
@@ -61,51 +68,16 @@ function cpfn_custom_post_list_meta_box_content( $post ) {
         // Reset global post data
         wp_reset_postdata(); 
     }
-    
-    // Add custom post css 
+
+    // Textare field for custom post css 
     echo '<div class="cpfn_css_field_box cpfn_padding cpfn_margin cpfn_flex">';
 
     echo '<label for="cpfn_textarea_post_label" class="cpfn_cp_css_label">' 
     .  esc_html__( 'Add Content CSS:', 'cp-content-fn' ) . '</label>';
 
-    echo '<textarea name="cpfn_textarea_post_css" class="cpfn_textarea_cp_css" placeholder="' 
-    .  esc_attr( __('Add CSS here...', 'cp-content-fn') ) . '"></textarea>';
+    echo '<textarea name="cpfn_textarea_css_input" id="cpfn_textarea_css_input" class="cpfn_textarea_cp_css" placeholder="' 
+    .  esc_attr( __('Add CSS here...', 'cp-content-fn') ) . '">' 
+    . esc_textarea( $cpfn_textarea_saved_css ) . '</textarea>';
 
     echo '</div>';
 }
-
-/**
- * 
- * This PHP function saves the selected post ID and updates the custom post content based on the
- * selected post.
- * 
- * @param post_id The post ID of the post being saved.
- * 
- * @return nothing.
- */
-
-function cpfn_save_selected_post( $post_id ){
-
-    // Check 'cpfn_selected_post_id' isset
-    if ( isset( $_POST['cpfn_selected_post_id'] ) ){
-
-        // Check if it's a revision
-        if ( wp_is_post_revision( $post_id ) ) {
-             return;
-        }     
-        // Update selected post id
-        update_post_meta( $post_id, 'cpfn_selected_post_id', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
-
-        // unhook this function so it doesn't loop infinitely
-        remove_action( 'save_post', 'cpfn_save_selected_post' );
-        
-        // Set custom post content to selected post
-        cpfn_set_custom_post_content( $post_id, $_POST['cpfn_selected_post_id'] );
-
-        // re-hook this function
-		add_action('save_post', 'cpfn_save_selected_post');
-
-    }
-}
-
-add_action( 'save_post', 'cpfn_save_selected_post' );
