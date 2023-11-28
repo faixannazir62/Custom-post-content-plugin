@@ -29,15 +29,15 @@ function cpfn_save_custom_fields_input(){
      */ 
      
     if ( isset( $_POST['cpfn_textarea_css_input'] )){
-
+    
             // Update custom post css
-            update_post_meta( $post->ID, 'cpfn_textarea_saved_css1', sanitize_textarea_field( $_POST['cpfn_textarea_css_input'] ) );
+            update_post_meta( $post->ID, 'cpfn_textarea_saved_css', sanitize_textarea_field( $_POST['cpfn_textarea_css_input'] ) );
 
     }
     if ( isset( $_POST['cpfn_selected_post_id'] )){
-
+            
             // Update selected post id
-            update_post_meta( $post->ID, 'cpfn_selected_post_id2', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
+            update_post_meta( $post->ID, 'cpfn_selected_post_id', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
    
     }
 
