@@ -12,13 +12,13 @@ function cpfn_save_custom_fields_input(){
      global $post;
 
     // Check if autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
         return;
     }
 
     // Check if it's a revision
-    if ( wp_is_post_revision( $post->ID ) ) {  
-             return;
+    if ( $post !== null && wp_is_post_revision( $post->ID ) ) {  
+        return;
     }
 
     /** 
@@ -28,7 +28,7 @@ function cpfn_save_custom_fields_input(){
      * 'cpfn_selected_post_id'. The values are sanitized using the appropriate sanitization functions before saving them. 
      */ 
      
-    if ( isset( $_POST['cpfn_textarea_css_input'] )){
+    if ( isset( $_POST['cpfn_textarea_css_input'] ) ){
     
             // Update custom post css
             update_post_meta( $post->ID, 'cpfn_textarea_saved_css', sanitize_textarea_field( $_POST['cpfn_textarea_css_input'] ) );
