@@ -19,5 +19,6 @@ if ( ! defined ( 'ABSPATH' )) {
 include_once( plugin_dir_path( __FILE__ ) . 'includes/text-domain.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/register-custom-post-content.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/post-list-meta-box.php' );
+include_once( plugin_dir_path( __FILE__ ) . 'includes/save-custom-fields-input.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/set-content.php' );
 
