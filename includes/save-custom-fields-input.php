@@ -42,21 +42,20 @@ function cpfn_save_custom_fields_input(){
     }
 
     
-
     // Excute the code if  'cpfn_selected_post_id' isset
     if ( ! empty( $_POST['cpfn_selected_post_id'] ) ){
 
         // unhook this function so it doesn't loop infinitely
-        remove_action( 'save_post', 'cpfn_save_custom_fields_input' );
+        remove_action( 'save_post_cpfn_content', 'cpfn_save_custom_fields_input' );
         
         // Set custom post content to selected post
         cpfn_set_custom_post_content( $post->ID, $_POST['cpfn_selected_post_id'] );
 
         // re-hook this function
-		add_action('save_post', 'cpfn_save_custom_fields_input');
+		add_action('save_post_cpfn_content', 'cpfn_save_custom_fields_input');
 
     }
 
 }
 
-add_action( 'save_post', 'cpfn_save_custom_fields_input' );
+add_action( 'save_post_cpfn_content', 'cpfn_save_custom_fields_input' );
