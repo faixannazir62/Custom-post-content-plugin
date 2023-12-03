@@ -11,13 +11,18 @@ function cpfn_save_custom_fields_input(){
     // Global post variable
      global $post;
 
-    // Check if autosave
+    // Return if autosave
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
         return;
     }
 
-    // Check if it's a revision
+    // Return if it's a revision
     if ( $post !== null && wp_is_post_revision( $post->ID ) ) {  
+        return;
+    }
+
+    // Return if current user don't have edit post access.
+    if(!current_user_can( 'edit_post')){
         return;
     }
 
