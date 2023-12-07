@@ -22,10 +22,10 @@ function cpfn_save_custom_fields_input(){
     }
 
     // Return if current user don't have edit post access.
-    if(!current_user_can( 'edit_post')){
+    if(!current_user_can( 'edit_post', $post->ID)){
         return;
     }
-
+    
     /** 
      * The code is updating the post meta data for the current post. 
      * It is saving the value of the custom CSS input field with the meta key 
