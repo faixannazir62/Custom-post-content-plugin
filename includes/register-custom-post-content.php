@@ -46,9 +46,6 @@ function cpfn_register_custom_post_content(){
 
           // Register post function
           register_post_type( 'cpfn_content', $args);
-          
-          // Remove custom fields
-          remove_post_type_support( 'cpfn_content', 'custom-fields' );
 
 }
 add_action( 'init', 'cpfn_register_custom_post_content');
