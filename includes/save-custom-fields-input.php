@@ -22,7 +22,7 @@ function cpfn_save_custom_fields_input(){
     }
 
     // Return if current user don't have edit post access.
-    if(!current_user_can( 'edit_post', $post->ID)){
+    if( $post !== null && !current_user_can( 'edit_post', $post->ID)){
         return;
     }
     
