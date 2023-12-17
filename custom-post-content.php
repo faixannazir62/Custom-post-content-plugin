@@ -22,4 +22,5 @@ include_once( plugin_dir_path( __FILE__ ) . 'includes/post-list-meta-box.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/save-custom-fields-input.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/set-content.php' );
 include_once( plugin_dir_path( __FILE__ ) . 'includes/set-meta-field-css.php' );
+include_once( plugin_dir_path( __FILE__ ) . 'includes/manage_columns.php' );
 
