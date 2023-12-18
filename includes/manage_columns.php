@@ -45,14 +45,18 @@ add_filter('manage_cpfn_content_posts_columns', 'cpfn_add_shortcode_column');
  */
 function cpfn_display_shortcode( $column, $post_id){
 
+    // Only add post shortcodes if its a shortcode column
     if ( $column == 'shortcode' ){
 
-         $cpfn_post_title = get_the_title($post_id);
+        // Get current post title
+        $cpfn_post_title = get_the_title($post_id);
 
-         $cpfn_shortcode = '[cpfn title="' . esc_attr($cpfn_post_title) . '"]';
+        // Creating a shortcode string based on the post title.
+        $cpfn_shortcode = '[cpfn title="' . esc_attr($cpfn_post_title) . '"]';
 
-          echo '<input type="text" readonly="readonly" value="' . esc_attr( $cpfn_shortcode) . 
-          '" class="cpfn-shortcode-input" onclick="this.select();" />';
+        // Echo the shortcode in column
+        echo '<input type="text" readonly="readonly" value="' . esc_attr( $cpfn_shortcode) . 
+        '" class="cpfn-shortcode-input" onclick="this.select();" />';
     }
 
 }
