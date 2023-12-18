@@ -49,10 +49,10 @@ function cpfn_display_shortcode( $column, $post_id){
     if ( $column == 'shortcode' ){
 
         // Get current post title
-        $cpfn_post_title = get_the_title($post_id);
+        $cpfn_post_id= $post_id;
 
-        // Creating a shortcode string based on the post title.
-        $cpfn_shortcode = '[cpfn title="' . esc_attr($cpfn_post_title) . '"]';
+        // Creating a shortcode string based on the post id.
+        $cpfn_shortcode = '[cpfn id="' . esc_attr( $cpfn_post_id ) . '"]';
 
         // Echo the shortcode in column
         echo '<input type="text" readonly="readonly" value="' . esc_attr( $cpfn_shortcode) . 
