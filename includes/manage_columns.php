@@ -13,21 +13,21 @@
 function cpfn_add_shortcode_column( $columns ) {
 
     // Create empty array
-    $new_columns = array();
+    $cpfn_new_columns = array();
 
     foreach ($columns as $key => $value) {
 
-        $new_columns[$key] = $value;
+        $cpfn_new_columns[$key] = $value;
 
         // if key is equal to 'title' then Add 'Shortcode' column after the title column
         if ($key == 'title') {
 
-            $new_columns['shortcode'] = __('Shortcode', 'cp-content-fn');
+            $cpfn_new_columns['shortcode'] = __('Shortcode', 'cp-content-fn');
 
         }
     }
     // Return new columns list.
-    return $new_columns;
+    return $cpfn_new_columns;
 
 }
 add_filter('manage_cpfn_content_posts_columns', 'cpfn_add_shortcode_column');
