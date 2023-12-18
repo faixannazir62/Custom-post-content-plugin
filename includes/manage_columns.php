@@ -45,7 +45,7 @@ add_filter('manage_cpfn_content_posts_columns', 'cpfn_add_shortcode_column');
  */
 function cpfn_display_shortcode( $column, $post_id){
 
-    // Only add post shortcodes if its a shortcode column
+    // Check if Column is equal to shortcode
     if ( $column == 'shortcode' ){
 
         // Get current post title
