@@ -12,6 +12,9 @@
  */
 function cpfn_generate_shortcode( $atts ){
 
+          // Get current post
+          global $post;
+
           // Add two attributes post id and the post type
           $atts = shortcode_atts( array(
 
@@ -29,6 +32,9 @@ function cpfn_generate_shortcode( $atts ){
                     // Check post is not Null and post status should be published
                     if ( $cpfn_post && $cpfn_post->post_status === 'publish' ){
 
+                              // Store the content post id with the id of current post, it will be used to apply css on the content
+                              update_post_meta( $post->ID, 'cpfn_content_post_id',  $cpfn_post->ID );
+                              
                               // Return post content wrapped in HTML div tag with a class attribute
                               return '<div class="cpfn_content_'. esc_attr( $cpfn_post->ID ) . '">
                               ' . $cpfn_post->post_content . '</div>';
