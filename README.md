@@ -1,2 +1,2 @@
-This plugin is under development
+This plugin is under development,
 coming soon...
