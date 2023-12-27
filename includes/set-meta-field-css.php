@@ -38,6 +38,7 @@ function cpfn_apply_custom_css() {
         if( ! empty( $cpfn_custom_css )  ) {
 
             echo '<style id="cpfn-css">' . wp_strip_all_tags( $cpfn_custom_css ) . '</style>';
+            
         }
 
 
