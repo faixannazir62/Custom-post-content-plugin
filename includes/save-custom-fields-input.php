@@ -33,20 +33,42 @@ function cpfn_save_custom_fields_input(){
      * 'cpfn_selected_post_id'. The values are sanitized using the appropriate sanitization functions before saving them. 
      */ 
      
-    if ( ! empty( $_POST['cpfn_textarea_css_input'] ) ){
-    
-        // Update custom post css
-        update_post_meta( $post->ID, 'cpfn_textarea_saved_css', sanitize_textarea_field( $_POST['cpfn_textarea_css_input'] ) );
+     // Check and update or delete custom post css
+    if ( isset( $_POST['cpfn_textarea_css_input'] )) {
 
+        $cpfn_textarea_css_input = sanitize_textarea_field( $_POST['cpfn_textarea_css_input'] );
+
+        if ( ! empty( $cpfn_textarea_css_input ) ) {
+
+            // Update custom post css
+            update_post_meta( $post->ID, 'cpfn_textarea_saved_css', $cpfn_textarea_css_input );
+
+        } else {
+
+            // If the value is empty, delete the post meta
+            delete_post_meta( $post->ID, 'cpfn_textarea_saved_css' );
+
+        }
     }
-    if ( ! empty( $_POST['cpfn_selected_post_id'] )){
-            
-        // Update selected post id
-        update_post_meta( $post->ID, 'cpfn_selected_post_id', sanitize_text_field( $_POST['cpfn_selected_post_id'] ));
 
+    // Check and update or delete selected post id
+    if ( isset($_POST['cpfn_selected_post_id'] )) {
+
+        $cpfn_selected_post_id = sanitize_text_field( $_POST['cpfn_selected_post_id'] );
+
+        if ( ! empty( $cpfn_selected_post_id )) {
+
+            // Update selected post id
+            update_post_meta( $post->ID, 'cpfn_selected_post_id', $cpfn_selected_post_id );
+
+        } else {
+
+            // If the value is empty, delete the post meta
+            delete_post_meta( $post->ID, 'cpfn_selected_post_id' );
+
+        }
     }
-
-    
+ 
     // Excute the code if  'cpfn_selected_post_id' isset
     if ( ! empty( $_POST['cpfn_selected_post_id'] ) ){
 
