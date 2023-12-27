@@ -33,7 +33,7 @@ function cpfn_register_custom_post_content(){
           $args = array(
 
                     'labels'                => $labels,
-                    'public'                => true,
+                    'public'                => false,
                     'show_ui'               => true,
                     'supports'              => array( 'title', 'editor', 'author', 'revisions' ),
                     'has_archive'           => true,
