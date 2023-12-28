@@ -1,2 +1,2 @@
-This plugin is under development,
+Only Readme text is pending,
 coming soon...
