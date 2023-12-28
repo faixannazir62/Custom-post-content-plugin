@@ -75,8 +75,11 @@ function cpfn_custom_post_list_meta_box_content() {
     echo '<label for="cpfn_textarea_post_label" class="cpfn_cp_css_label">' 
     .  esc_html__( 'Add Content CSS:', 'cp-content-fn' ) . '</label>';
 
+    // Textarea placeholder text
+    $cpfn_textarea_placeholder = 'Add content CSS here using appropriate IDs and classes.';
+
     echo '<textarea name="cpfn_textarea_css_input" id="cpfn_textarea_css_input" class="cpfn_textarea_cp_css" placeholder="' 
-    .  esc_attr( __('Add CSS here...', 'cp-content-fn') ) . '">' 
+    .  esc_attr( __( $cpfn_textarea_placeholder, 'cp-content-fn') ) . '">' 
     . esc_textarea( $cpfn_textarea_saved_css ) . '</textarea>';
 
     echo '</div>';
