@@ -38,8 +38,11 @@ function cpfn_enqueue_scripts(){
 
           // Checkif the current post type is equal to 'cpfn_content'. If it is, then  enqueue a CSS file
           if( 'cpfn_content' === $post_type ){
+
                     // Enqueue CSS file
-                    wp_enqueue_style( 'cpfn-meta-box-styles', plugin_dir_url( __FILE__ ) . 'admin/css/admin-styles-cpfn.css' );
+                    wp_enqueue_style( 'cpfn-meta-box-styles', plugin_dir_url( __FILE__ ) 
+                    . 'admin/css/admin-styles-cpfn.css' );
+                    
           }
           
 
