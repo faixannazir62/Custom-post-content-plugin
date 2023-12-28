@@ -1,0 +1,25 @@
+/* Meta box fields css */
+.cpfn_flex {
+  display: flex;
+  gap: 10px;
+}
+
+.cpfn_select_field_box {
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+.cpfn_select_field_box select,
+#cpfn_textarea_css_input {
+  width: 250px;
+}
+
+#cpfn_textarea_css_input {
+  min-height: 300px;
+}
+
+.cpfn_sf_label,
+.cpfn_cp_css_label 
+{
+  font-weight: 600;
+}
